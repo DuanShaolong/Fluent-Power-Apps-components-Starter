@@ -2,9 +2,10 @@ import * as React from 'react';
 import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
 import { FontWeights } from '@uifabric/styling';
 import { Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
+import swal from 'sweetalert';
 
 const alertClicked = (): void => {
-  alert('Clicked');
+  swal("Clicked!");
 };
 export class CardHorizontalExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -16,7 +17,7 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
     };
     const descriptionTextStyles: ITextStyles = {
       root: {
-        color: '#333333',
+        color: '#000000',
         fontWeight: FontWeights.regular,
       },
     };
@@ -28,7 +29,7 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
     };
     const iconStyles: IIconStyles = {
       root: {
-        color: '#0078D4',
+        color: '#ffffff',
         fontSize: 16,
         fontWeight: FontWeights.regular,
       },

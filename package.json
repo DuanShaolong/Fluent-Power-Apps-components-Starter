@@ -15,7 +15,8 @@
     "@uifabric/react-cards": "^0.109.63",
     "office-ui-fabric-react": "^7.107.5",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "@types/react": "^16.9.34",
