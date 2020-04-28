@@ -1,13 +1,23 @@
 import * as React from 'react';
 import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
 import { FontWeights } from '@uifabric/styling';
-import { Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
+import { initializeIcons } from '@uifabric/icons';
+import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
+import { Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles, Panel } from 'office-ui-fabric-react';
 // import React from 'react';
 import swal from 'sweetalert2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faCheckSquare, faBars, faCoffee } from '@fortawesome/free-solid-svg-icons';
+
+initializeIcons();
+
+library.add( fab, faBars, faCheckSquare, faCoffee);
 
 const alertClicked = (): void => {
   // alert("this is a cliked alert!");
-  swal.fire('Clicked!');
+  swal.fire('this is a click alert!');
 };
 export class CardHorizontalExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -61,7 +71,7 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
           </Card.Item>
           <Card.Section>
             <Text variant="small" styles={siteTextStyles}>
-              Contoso
+              Contobucks
             </Text>
             <Text styles={descriptionTextStyles}>Contoso Denver expansion design marketing hero guidelines</Text>
             <Text variant="small" styles={helpfulTextStyles}>
@@ -69,15 +79,30 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
             </Text>
           </Card.Section>
           <Card.Section styles={footerCardSectionStyles} tokens={footerCardSectionTokens}>
-            <Icon iconName="RedEye" styles={iconStyles} />
-            <Icon iconName="SingleBookmark" styles={iconStyles} />
+            <FontIcon iconName="CompassNW" />
+            <FontIcon iconName="Dictionary"/>
             <Stack.Item grow={1}>
               <span />
             </Stack.Item>
-            <Icon iconName="MoreVertical" styles={iconStyles} />
+            <FontIcon iconName="Home" />
+            <FontAwesomeIcon icon={faBars} />
           </Card.Section>
         </Card>
+        
+        <Card aria-label="Basic horizontal card" horizontal tokens={cardTokens}>
+          <Card.Item>
+            <Text> Popular gadgets come from vendors like:</Text>
+            <FontAwesomeIcon icon={['fab', 'apple']} />
+            <span> </span>
+            <FontAwesomeIcon icon={['fab', 'microsoft']} />
+            <FontAwesomeIcon icon={['fab', 'google']} />
+            <FontAwesomeIcon icon={['fab', 'facebook']} />
+          </Card.Item>
+        </Card>
+
+        
       </Stack>
+      
     );
   }
 }
