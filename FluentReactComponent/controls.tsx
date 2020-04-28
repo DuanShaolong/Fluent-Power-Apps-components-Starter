@@ -2,10 +2,12 @@ import * as React from 'react';
 import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
 import { FontWeights } from '@uifabric/styling';
 import { Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
-import swal from 'sweetalert';
+// import React from 'react';
+import swal from 'sweetalert2';
 
 const alertClicked = (): void => {
-  swal("Clicked!");
+  // alert("this is a cliked alert!");
+  swal.fire('Clicked!');
 };
 export class CardHorizontalExample extends React.Component<{}, {}> {
   public render(): JSX.Element {

@@ -16,7 +16,6 @@
     -->
     <resources>
       <code path="index.ts" order="2"/>
-      
       <!-- UNCOMMENT TO ADD MORE RESOURCES
       <css path="css/FluentReactComponent.css" order="1" />
       <resx path="strings/FluentReactComponent.1033.resx" version="1.0.0" />
