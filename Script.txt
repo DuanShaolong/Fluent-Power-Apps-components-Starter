@@ -1,0 +1,4 @@
+mkdir Solutions
+cd Solutions
+pac solution init --publisher-name <enter your publisher name> --publisher-prefix <enter your publisher prefix>
+pac solution add-reference --path <path to your Power Apps component framework project>

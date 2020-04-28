@@ -99,7 +99,7 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
             <FontAwesomeIcon icon={['fab', 'facebook']} />
           </Card.Item>
         </Card>
-
+        
         
       </Stack>
       
