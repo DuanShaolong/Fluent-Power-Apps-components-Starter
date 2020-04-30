@@ -71,11 +71,12 @@ export class CardHorizontalExample extends React.Component<IFluent> {
       //设置标签的type属性
       script.type = "text/javascript";
       //设置标签的链接地址
-      script.src = "https://map.qq.com/api/js?v=2.exp&key=DUGBZ-Y6JKG-7EYQ3-IDNGB-OYLPF-ALBXX&callback=init";
+      script.src = "http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AkkU9Gw5px5LSvDHS-BOtqVgOVHAfqAzZE8GmsNobCGk6mD0yDhLQUQDW4gl05kN";
       //添加标签到dom
       document.body.appendChild(script);
+      console.log("OK!")
     }
-    
+     
 
     return (
       <Stack tokens={sectionStackTokens} onLoad={loadScript}>
@@ -120,7 +121,9 @@ export class CardHorizontalExample extends React.Component<IFluent> {
           </Card.Item>
         </Card>
         <iframe src="~/Html/Maps.html" />
-        
+        <div id={"mymap"} style={{position:"relative",width:"600px",height:"400px"}}>
+
+        </div>
       </Stack>
   
     );
