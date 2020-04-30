@@ -19,7 +19,15 @@ const alertClicked = (): void => {
   // alert("this is a cliked alert!");
   swal.fire('this is a click alert!');
 };
-export class CardHorizontalExample extends React.Component<{}, {}> {
+export interface IFluent{
+  test?:string;
+  testChange?:(newValue:string) =>void;
+}
+export class CardHorizontalExample extends React.Component<IFluent> {
+  constructor(props:IFluent){
+    super(props);
+    console.log(props.test);
+  }
   public render(): JSX.Element {
     const siteTextStyles: ITextStyles = {
       root: {
@@ -56,12 +64,24 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
     const sectionStackTokens: IStackTokens = { childrenGap: 20 };
     const cardTokens: ICardTokens = { childrenMargin: 12 };
     const footerCardSectionTokens: ICardSectionTokens = { padding: '0px 0px 0px 12px' };
+    //异步加载地图库函数文件
+    function loadScript() {
+      //创建script标签
+      var script = document.createElement("script");
+      //设置标签的type属性
+      script.type = "text/javascript";
+      //设置标签的链接地址
+      script.src = "https://map.qq.com/api/js?v=2.exp&key=DUGBZ-Y6JKG-7EYQ3-IDNGB-OYLPF-ALBXX&callback=init";
+      //添加标签到dom
+      document.body.appendChild(script);
+    }
+    
 
     return (
-      <Stack tokens={sectionStackTokens}>
+      <Stack tokens={sectionStackTokens} onLoad={loadScript}>
         <Card aria-label="Basic horizontal card" horizontal tokens={cardTokens}>
           <Card.Item>
-            <Text>Basic horizontal card</Text>
+    <Text>Basic horizontal card {this.props.test}</Text>
           </Card.Item>
         </Card>
 
@@ -99,10 +119,10 @@ export class CardHorizontalExample extends React.Component<{}, {}> {
             <FontAwesomeIcon icon={['fab', 'facebook']} />
           </Card.Item>
         </Card>
-        
+        <iframe src="~/Html/Maps.html" />
         
       </Stack>
-      
+  
     );
   }
 }

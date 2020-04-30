@@ -1,7 +1,7 @@
 import {IInputs, IOutputs} from "./generated/ManifestTypes";
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {CardHorizontalExample} from './controls';
+import {CardHorizontalExample,IFluent} from './controls';
 
 export class FluentReactComponent implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 	// reference to the notifyOutputChanged method
@@ -9,7 +9,9 @@ export class FluentReactComponent implements ComponentFramework.StandardControl<
 	// reference to the container div
 	private theContainer: HTMLDivElement;
 	// reference to the React props, prepopulated with a bound event handler
-	private props = {
+	private props: IFluent= {
+		testChange:this.testChange.bind(this),
+
 	};
 	/**
 	 * Empty constructor.
@@ -31,7 +33,7 @@ export class FluentReactComponent implements ComponentFramework.StandardControl<
 	{
 		// Add control initialization code
 		this.notifyOutputChanged = notifyOutputChanged;
-		this.props = context.parameters;
+		this.props.test=context.parameters.sampleProperty.raw||"hjgj";
 		this.theContainer = container;
 	}
 
@@ -43,21 +45,31 @@ export class FluentReactComponent implements ComponentFramework.StandardControl<
 	public updateView(context: ComponentFramework.Context<IInputs>): void
 	{
 		// Add code to update control view
+		if(context.updatedProperties.includes("test")) this.props.test="12313";
 		ReactDOM.render(
 			React.createElement(
 				CardHorizontalExample,
+				this.props
 			),
 			this.theContainer
 		  );
 	}
-
+	private testChange(newValue:string)
+	{
+		if(this.props.test !== newValue){
+			this.props.test = newValue;
+		this.notifyOutputChanged();
+		}
+	}
 	/** 
 	 * It is called by the framework prior to a control receiving new data. 
 	 * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as “bound” or “output”
 	 */
 	public getOutputs(): IOutputs
 	{
-		return {};
+		return {
+
+		};
 	}
 
 	/** 
